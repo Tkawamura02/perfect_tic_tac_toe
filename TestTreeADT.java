@@ -1,3 +1,5 @@
+package perfect_tic_tac_toe;
+
 public class TestTreeADT {
 	public static void main(String[] args) {
 		ArrayTree<Integer> a1 = new ArrayTree<Integer>(2, 25);
@@ -17,11 +19,11 @@ public class TestTreeADT {
 
 		testcase("a1.root()", a1.root(), 0);
 		testcase("a1.parent()", a1.parent(7), 3);
-//		testcase("a1.child()", a1.child(10, 1), 22);
+		testcase("a1.child()", a1.child(10, 1), 22);
 		testcase("a1.size()", a1.size(), 21);
 		testcase("a1.isEmpty()", a1.isEmpty() ? 1 : 0, 0);
-//		testcase("a1.get()", a1.get(3), 4);
-//		testcase("a1.getChild()", a1.getChild(6, 1), 15);
+		testcase("a1.get()", a1.get(3), 4);
+		testcase("a1.getChild()", a1.getChild(6, 1), 15);
 		System.out.println("Small Tree: " + a1 +"\n");
 
 
@@ -37,11 +39,11 @@ public class TestTreeADT {
 
 		testcase("a2.root()", a2.root(), 0);
 		testcase("a2.parent()", a2.parent(27), 5);
-//		testcase("a2.child()", a2.child(14, 4), 75);
+		testcase("a2.child()", a2.child(14, 4), 75);
 		testcase("a2.size()", a2.size(), 51);
 		testcase("a2.isEmpty()", a2.isEmpty() ? 1 : 0, 0);
-//		testcase("a2.get()", a2.get(18), 40);
-//		testcase("a2.getChild()", a2.getChild(9, 0), 68);
+		testcase("a2.get()", a2.get(18), 40);
+		testcase("a2.getChild()", a2.getChild(9, 0), 68);
 		System.out.println("Large Tree: " + a2);
 	}
 

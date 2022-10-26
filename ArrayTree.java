@@ -1,47 +1,79 @@
-public class ArrayTree<E>{
-	public ArrayTree(int order, int capacity) {
-		//input is (2,25) and (5,55)
-		int count = capacity-4;
-		E array[];
-		//rank(root) = 0
-		//for parent at p child(p,c) = n*p+c+1
-		//where 0<=c<n;
-		root();
-		for (int i = 0; i<capacity-4; i++) {
-			array[i] = i++;
-		}
-	}
-	public ArrayTree() {
+package perfect_tic_tac_toe;
 
+public class ArrayTree<E>{
+	private int count = 0; //# array elements
+	private int order = 2; //# child nodes
+	private int size = 1000; //array size
+	private E[] array;
+	
+	@SuppressWarnings("unchecked")
+	public ArrayTree(int order, int capacity) {
+		this.order = order;
+		size = capacity;
+		array = (E[]) new Object[capacity];
 	}
+	
 	public int root() {
 		return 0;
 	}
+	
 	public int size() {
-		return 0;
+		return count;
 	}
+	
 	public boolean isEmpty() {
-		return true;
+		return count==0;
 	}
+	
 	public int parent(int p) {
-		return 0;
+		return ((p-1)/order);
 	}
-	public int child(int p, int c) { //not sure why I am getting error
-		return 0;
+	
+	public int child(int p, int c) { 
+		int pos = order * p + c + 1;
+		if (pos > size || pos < 0) {
+			return -1;
+		} else 
+			return pos;
 	}
+	
 	public int addRoot(E e) {
+		array[0] = e;
+		count++;
 		return 0;
 	}
-//	public E get(int pos) {
-//		return null;
-//	}
+	
+	public E get(int pos) {
+		return array[pos];
+	}
+	
 	public int addChild(int parent, int child, E e) {
-		return 0;
+		if (array[parent] != null) {
+			child = child(parent,child);
+			array[child] = e;
+		}
+		count++;
+		return child;
 	}
-//	public E getChild(int parent, int child) {
-//		return null;
-//	}
+	
+	public E getChild(int parent, int child) {
+		if (array[parent] != null) {
+			child = child(parent,child);
+		}
+		return array[child];
+	}
+	
 	public String toString() {
-		return null;
+		String beg = "[ArrayTree: order="+order + " count="+count + " size="+size + " array={ " ;
+		String end = "";
+        for(int i = 0; i < size; i++) {
+            if(array[i] != null) {
+                end += array[i] + " ";
+            } else {
+            	end += " - ";
+            }
+        }
+        end = end + "}]";
+        return beg+end;
 	}
 }
